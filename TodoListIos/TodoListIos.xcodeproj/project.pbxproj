@@ -12,6 +12,8 @@
 		085BF18322159C7F00F12E59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085BF18122159C7F00F12E59 /* Main.storyboard */; };
 		085BF18522159C8000F12E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 085BF18422159C8000F12E59 /* Assets.xcassets */; };
 		085BF18822159C8000F12E59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 085BF18622159C8000F12E59 /* LaunchScreen.storyboard */; };
+		085BF1932215A40E00F12E59 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085BF1922215A40E00F12E59 /* ChecklistItem.swift */; };
+		085BF1972215D09200F12E59 /* AddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085BF1962215D09200F12E59 /* AddItemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		085BF18422159C8000F12E59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		085BF18722159C8000F12E59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		085BF18922159C8000F12E59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		085BF1922215A40E00F12E59 /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		085BF1962215D09200F12E59 /* AddItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,40 @@
 		085BF17C22159C7F00F12E59 /* TodoListIos */ = {
 			isa = PBXGroup;
 			children = (
+				085BF1902215A37400F12E59 /* Views */,
+				085BF1912215A38500F12E59 /* Controllers */,
+				085BF18F2215A36A00F12E59 /* Modeles */,
 				085BF17D22159C7F00F12E59 /* AppDelegate.swift */,
-				085BF17F22159C7F00F12E59 /* ChecklistViewController.swift */,
-				085BF18122159C7F00F12E59 /* Main.storyboard */,
 				085BF18422159C8000F12E59 /* Assets.xcassets */,
-				085BF18622159C8000F12E59 /* LaunchScreen.storyboard */,
 				085BF18922159C8000F12E59 /* Info.plist */,
 			);
 			path = TodoListIos;
+			sourceTree = "<group>";
+		};
+		085BF18F2215A36A00F12E59 /* Modeles */ = {
+			isa = PBXGroup;
+			children = (
+				085BF1922215A40E00F12E59 /* ChecklistItem.swift */,
+			);
+			path = Modeles;
+			sourceTree = "<group>";
+		};
+		085BF1902215A37400F12E59 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				085BF18622159C8000F12E59 /* LaunchScreen.storyboard */,
+				085BF18122159C7F00F12E59 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		085BF1912215A38500F12E59 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				085BF17F22159C7F00F12E59 /* ChecklistViewController.swift */,
+				085BF1962215D09200F12E59 /* AddItemTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				085BF1972215D09200F12E59 /* AddItemTableViewController.swift in Sources */,
 				085BF18022159C7F00F12E59 /* ChecklistViewController.swift in Sources */,
+				085BF1932215A40E00F12E59 /* ChecklistItem.swift in Sources */,
 				085BF17E22159C7F00F12E59 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
