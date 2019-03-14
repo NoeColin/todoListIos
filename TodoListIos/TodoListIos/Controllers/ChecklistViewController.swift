@@ -11,6 +11,17 @@ import UIKit
 class ChecklistViewController: UITableViewController {
     
     var ChecklistItems = Array<ChecklistItem>()
+    var documentDirectory: URL {
+        get{
+            return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        }
+    }
+    
+    var dataFileUrl: URL{
+        get{
+            return documentDirectory.appendingPathComponent("Checklists").appendingPathExtension("json")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +31,8 @@ class ChecklistViewController: UITableViewController {
         self.ChecklistItems.append(item1)
         self.ChecklistItems.append(item2)
         self.ChecklistItems.append(item3)
+        print(documentDirectory)
+        print(dataFileUrl)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -72,12 +85,12 @@ class ChecklistViewController: UITableViewController {
         
         if(segue.identifier == "addItem"){
             let navigation = segue.destination as! UINavigationController
-            let delegateVC = navigation.topViewController as! AddItemTableViewController
+            let delegateVC = navigation.topViewController as! ItemDetailViewController
             delegateVC.delegate = self
         }
         else if("editItem" == segue.identifier){
             let navigation = segue.destination as! UINavigationController
-            let delegateVC = navigation.topViewController as! AddItemTableViewController
+            let delegateVC = navigation.topViewController as! ItemDetailViewController
             delegateVC.delegate = self
             let cell = sender as! emCell
             let index = tableView.indexPath(for: cell)
@@ -86,8 +99,8 @@ class ChecklistViewController: UITableViewController {
     }
 }
 
-extension ChecklistViewController : AddItemViewControllerDelegate{
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishUpdateItem item: ChecklistItem) {
+extension ChecklistViewController : ItemDetailDelegate{
+    func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishUpdateItem item: ChecklistItem) {
         dismiss(animated: true)
         let index : Int = ChecklistItems.index(where: {$0 === item})!
         ChecklistItems[index].text = item.text
@@ -95,10 +108,10 @@ extension ChecklistViewController : AddItemViewControllerDelegate{
         
     }
     
-    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController){
+    func ItemDetailViewControllerDidCancel(_ controller: ItemDetailViewController){
         dismiss(animated: true)
     }
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishAddingItem item: ChecklistItem){
+    func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem){
         dismiss(animated: true)
         ChecklistItems.append(item)
         tableView.insertRows(at: [IndexPath(row: ChecklistItems.count - 1, section: 0)], with: UITableView.RowAnimation.automatic)
