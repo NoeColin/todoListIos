@@ -44,7 +44,7 @@ class ChecklistViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
         configureText(for: cell, withItem: ChecklistItems[indexPath.item])
-        configureCheckmark(for: cell, withItem: ChecklistItems[indexPath.item])
+        /*configureCheckmark(for: cell, withItem: ChecklistItems[indexPath.item])*/
         return cell
     }
     
@@ -58,8 +58,27 @@ class ChecklistViewController: UITableViewController {
     }
     
     func configureText(for cell: UITableViewCell, withItem item: ChecklistItem){
-        cell.textLabel?.text = item.text
+        //cell.textLabel?.text = item.text
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "addItem"){
+            let navigation = segue.destination as! UINavigationController
+            let delegateVC = navigation.topViewController as! AddItemTableViewController
+            delegateVC.delegate = self
+        }
     }
 
+}
+
+extension ChecklistViewController : AddItemViewControllerDelegate{
+    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController){
+        dismiss(animated: true)
+    }
+    func addItemViewController(_ controller: AddItemTableViewController, didFinishAddingItem item: ChecklistItem){
+        dismiss(animated: true)
+        ChecklistItems.append(item)
+        tableView.insertRows(at: [IndexPath(row: ChecklistItems.count - 1, section: 0)], with: UITableView.RowAnimation.automatic)
+    }
 }
 
