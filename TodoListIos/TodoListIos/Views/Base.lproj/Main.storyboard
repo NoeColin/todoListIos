@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="oUP-Qy-mlc">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="oUP-Qy-mlc" customClass="emCell" customModule="TodoListIos" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oUP-Qy-mlc" id="otw-uZ-gaL">
@@ -47,6 +47,11 @@
                                         <constraint firstItem="GFX-9x-4O6" firstAttribute="leading" secondItem="otw-uZ-gaL" secondAttribute="leadingMargin" id="YEv-t7-cU0"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkLabel" destination="GFX-9x-4O6" id="UTu-8w-8Ws"/>
+                                    <outlet property="itemLabel" destination="xOk-rq-BkB" id="1ef-f6-Ljo"/>
+                                    <segue destination="Qec-Nj-uGE" kind="presentation" identifier="editItem" trigger="accessoryAction" id="G6O-3d-we1"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -169,4 +174,7 @@
             <point key="canvasLocation" x="1233" y="134"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="G6O-3d-we1"/>
+    </inferredMetricsTieBreakers>
 </document>

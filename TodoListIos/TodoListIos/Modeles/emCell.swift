@@ -21,4 +21,7 @@ class emCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var checkLabel: UILabel!
+    
 }

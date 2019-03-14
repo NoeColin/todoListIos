@@ -43,8 +43,8 @@ class ChecklistViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
-        configureText(for: cell, withItem: ChecklistItems[indexPath.item])
-        /*configureCheckmark(for: cell, withItem: ChecklistItems[indexPath.item])*/
+        configureText(for: cell as! emCell, withItem: ChecklistItems[indexPath.item])
+        configureCheckmark(for: cell as! emCell, withItem: ChecklistItems[indexPath.item])
         return cell
     }
     
@@ -53,25 +53,48 @@ class ChecklistViewController: UITableViewController {
         tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
     }
     
-    func configureCheckmark(for cell: UITableViewCell, withItem item: ChecklistItem){
-        cell.accessoryType = item.checked ? .checkmark : .none
+    func configureCheckmark(for cell: emCell, withItem item: ChecklistItem){
+        if(item.checked){
+            cell.checkLabel.isHidden = false
+        }else {
+            cell.checkLabel.isHidden = true
+        }
+        //cell.accessoryType = item.checked ? .checkmark : .none
+        
     }
     
-    func configureText(for cell: UITableViewCell, withItem item: ChecklistItem){
+    func configureText(for cell: emCell, withItem item: ChecklistItem){
+        cell.itemLabel.text = item.text
         //cell.textLabel?.text = item.text
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if(segue.identifier == "addItem"){
             let navigation = segue.destination as! UINavigationController
             let delegateVC = navigation.topViewController as! AddItemTableViewController
             delegateVC.delegate = self
         }
+        else if("editItem" == segue.identifier){
+            let navigation = segue.destination as! UINavigationController
+            let delegateVC = navigation.topViewController as! AddItemTableViewController
+            delegateVC.delegate = self
+            let cell = sender as! emCell
+            let index = tableView.indexPath(for: cell)
+            delegateVC.itemToEdit = ChecklistItems[index!.row]
+        }
     }
-
 }
 
 extension ChecklistViewController : AddItemViewControllerDelegate{
+    func addItemViewController(_ controller: AddItemTableViewController, didFinishUpdateItem item: ChecklistItem) {
+        dismiss(animated: true)
+        let index : Int = ChecklistItems.index(where: {$0 === item})!
+        ChecklistItems[index].text = item.text
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        
+    }
+    
     func addItemViewControllerDidCancel(_ controller: AddItemTableViewController){
         dismiss(animated: true)
     }
