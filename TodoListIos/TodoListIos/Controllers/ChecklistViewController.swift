@@ -36,6 +36,20 @@ class ChecklistViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    func saveCheckListItems(){
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        var data = try! encoder.encode(ChecklistItems)
+        print(String(data:data, encoding: .utf8)!)
+    }
+    
+    func loadCheckListItems(){
+        let decoder = JSONDecoder()
+        let jsonFile = try! Data(contentsOf: dataFileUrl)
+        var data = try! decoder.decode(Array<ChecklistItem>.self, from: jsonFile)
+        ChecklistItems = data
+    }
+    
     @IBAction func addDummyTodo(_ sender: Any) {
         let item4 = ChecklistItem.init(text: "Cellule51534")
         self.ChecklistItems.append(item4)
@@ -72,6 +86,7 @@ class ChecklistViewController: UITableViewController {
         }else {
             cell.checkLabel.isHidden = true
         }
+        saveCheckListItems()
         //cell.accessoryType = item.checked ? .checkmark : .none
         
     }
@@ -105,7 +120,7 @@ extension ChecklistViewController : ItemDetailDelegate{
         let index : Int = ChecklistItems.index(where: {$0 === item})!
         ChecklistItems[index].text = item.text
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-        
+        saveCheckListItems()
     }
     
     func ItemDetailViewControllerDidCancel(_ controller: ItemDetailViewController){
@@ -115,6 +130,7 @@ extension ChecklistViewController : ItemDetailDelegate{
         dismiss(animated: true)
         ChecklistItems.append(item)
         tableView.insertRows(at: [IndexPath(row: ChecklistItems.count - 1, section: 0)], with: UITableView.RowAnimation.automatic)
+        saveCheckListItems()
     }
 }
 
