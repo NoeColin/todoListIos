@@ -22,6 +22,10 @@ class ChecklistViewController: UITableViewController {
             return documentDirectory.appendingPathComponent("Checklists").appendingPathExtension("json")
         }
     }
+    
+    override func awakeFromNib() {
+       loadCheckListItems()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +44,7 @@ class ChecklistViewController: UITableViewController {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         var data = try! encoder.encode(ChecklistItems)
+        try! data.write(to: dataFileUrl)
         print(String(data:data, encoding: .utf8)!)
     }
     
@@ -47,6 +52,7 @@ class ChecklistViewController: UITableViewController {
         let decoder = JSONDecoder()
         let jsonFile = try! Data(contentsOf: dataFileUrl)
         var data = try! decoder.decode(Array<ChecklistItem>.self, from: jsonFile)
+        print(data)
         ChecklistItems = data
     }
     
