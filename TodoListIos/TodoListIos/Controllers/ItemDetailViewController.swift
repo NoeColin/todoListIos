@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddItemTableViewController: UITableViewController {
+class ItemDetailViewController: UITableViewController {
     
     var delegate : AddItemViewControllerDelegate?
     var itemToEdit : ChecklistItem?
@@ -48,7 +48,7 @@ class AddItemTableViewController: UITableViewController {
     }
 }
 
-extension AddItemTableViewController: UITextFieldDelegate{
+extension ItemDetailViewController: UITextFieldDelegate{
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
@@ -71,7 +71,7 @@ extension AddItemTableViewController: UITextFieldDelegate{
 }
 
 protocol AddItemViewControllerDelegate : class {
-    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController)
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishAddingItem item: ChecklistItem)
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishUpdateItem item: ChecklistItem)
+    func addItemViewControllerDidCancel(_ controller: ItemDetailViewController)
+    func addItemViewController(_ controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem)
+    func addItemViewController(_ controller: ItemDetailViewController, didFinishUpdateItem item: ChecklistItem)
 }
