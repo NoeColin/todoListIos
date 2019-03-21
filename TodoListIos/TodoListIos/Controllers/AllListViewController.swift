@@ -15,37 +15,50 @@ class AllListViewController: UITableViewController {
         // Initialization code
     }
     
-     var ListItem = Array<ChecklistItem>()
+    var lists = Array<Checklist>()
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let item1 = ChecklistItem.init(text: "Liste1")
-        let item2 = ChecklistItem.init(text: "Liste2")
-        let item3 = ChecklistItem.init(text: "Liste3")
-        self.ListItem.append(item1)
-        self.ListItem.append(item2)
-        self.ListItem.append(item3)
+        let item1 = Checklist.init(text: "Liste12")
+        let item2 = Checklist.init(text: "Liste23")
+        let item3 = Checklist.init(text: "Liste34")
+        self.lists.append(item1)
+        self.lists.append(item2)
+        self.lists.append(item3)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func configureText(for cell: UITableViewCell, withItem item: ChecklistItem){
+    func configureText(for cell: UITableViewCell, withItem item: Checklist){
        /// cell.itemLabel.text = item.text
-        cell.textLabel?.text = item.text
+        cell.textLabel?.text = item.name
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return self.ListItem.count
+        return self.lists.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListItem", for: indexPath)
-        configureText(for: cell,  withItem: ListItem[indexPath.item])
+        configureText(for: cell,  withItem: lists[indexPath.item])
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if("CheckListAccess" == segue.identifier){
+            let delegateVC = segue.destination as! ChecklistViewController
+            let cell = sender
+            let index =  tableView.indexPath(for: cell as! UITableViewCell)
+            delegateVC.list = lists[index!.row]
+        }
     }
 
     
    
 
 }
+
+

@@ -10,8 +10,10 @@ import UIKit
 
 class ChecklistViewController: UITableViewController {
     
-   
+   var list: Checklist!
+    var delegate : ChecklistDelegate?
     var ChecklistItems = Array<ChecklistItem>()
+    
     var documentDirectory: URL {
         get{
             return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -30,7 +32,7 @@ class ChecklistViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      self.title = list.name
         print(documentDirectory)
         print(dataFileUrl)
         // Do any additional setup after loading the view, typically from a nib.
@@ -39,7 +41,7 @@ class ChecklistViewController: UITableViewController {
     func saveCheckListItems(){
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        var data = try! encoder.encode(ChecklistItems)
+        let data = try! encoder.encode(ChecklistItems)
         try! data.write(to: dataFileUrl)
         print(String(data:data, encoding: .utf8)!)
     }
@@ -47,7 +49,7 @@ class ChecklistViewController: UITableViewController {
     func loadCheckListItems(){
         let decoder = JSONDecoder()
         let jsonFile = try! Data(contentsOf: dataFileUrl)
-        var data = try! decoder.decode(Array<ChecklistItem>.self, from: jsonFile)
+        let data = try! decoder.decode(Array<ChecklistItem>.self, from: jsonFile)
         print(data)
         ChecklistItems = data
     }
@@ -134,6 +136,10 @@ extension ChecklistViewController : ItemDetailDelegate{
         tableView.insertRows(at: [IndexPath(row: ChecklistItems.count - 1, section: 0)], with: UITableView.RowAnimation.automatic)
         saveCheckListItems()
     }
+}
+
+protocol ChecklistDelegate : class {
+    func ChecklistViewController(_ controller: ChecklistViewController, didSelectChecklist item: Checklist)
 }
 
 
