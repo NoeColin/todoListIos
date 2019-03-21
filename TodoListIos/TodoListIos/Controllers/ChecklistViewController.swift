@@ -10,6 +10,7 @@ import UIKit
 
 class ChecklistViewController: UITableViewController {
     
+   
     var ChecklistItems = Array<ChecklistItem>()
     var documentDirectory: URL {
         get{
@@ -29,12 +30,7 @@ class ChecklistViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let item1 = ChecklistItem.init(text: "Cellule1")
-        let item2 = ChecklistItem.init(text: "Cellule2")
-        let item3 = ChecklistItem.init(text: "Cellule3")
-        self.ChecklistItems.append(item1)
-        self.ChecklistItems.append(item2)
-        self.ChecklistItems.append(item3)
+      
         print(documentDirectory)
         print(dataFileUrl)
         // Do any additional setup after loading the view, typically from a nib.
@@ -139,4 +135,5 @@ extension ChecklistViewController : ItemDetailDelegate{
         saveCheckListItems()
     }
 }
+
 

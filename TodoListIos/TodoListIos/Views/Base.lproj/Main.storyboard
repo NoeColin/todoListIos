@@ -18,13 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Lan-u6-MMI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ListItem" id="Lan-u6-MMI">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lan-u6-MMI" id="hVM-Uo-ntn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="FLu-P2-Zng" kind="show" identifier="CheckListAccess" id="vFA-Gb-73n"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -36,9 +39,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wa-Io-H8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="444" y="-573"/>
+            <point key="canvasLocation" x="-514" y="134"/>
         </scene>
-        <!--CheckList-->
+        <!--Name of the list-->
         <scene sceneID="mlO-MC-Onc">
             <objects>
                 <tableViewController id="FLu-P2-Zng" customClass="ChecklistViewController" customModule="TodoListIos" customModuleProvider="target" sceneMemberID="viewController">
@@ -88,7 +91,7 @@
                             <outlet property="delegate" destination="FLu-P2-Zng" id="IUB-Tp-GIv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="CheckList" id="g4K-j1-R8F">
+                    <navigationItem key="navigationItem" title="Name of the list" id="g4K-j1-R8F">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dJz-si-ZNf">
                             <connections>
                                 <segue destination="Qec-Nj-uGE" kind="presentation" identifier="addItem" id="ve9-ZA-SRC"/>
@@ -182,7 +185,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vuu-en-fao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-503.19999999999999" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-1479" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SzP-e2-2la">
