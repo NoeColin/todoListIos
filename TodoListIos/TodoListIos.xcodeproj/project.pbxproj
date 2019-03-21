@@ -15,6 +15,7 @@
 		085BF1932215A40E00F12E59 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085BF1922215A40E00F12E59 /* ChecklistItem.swift */; };
 		085BF1972215D09200F12E59 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085BF1962215D09200F12E59 /* ItemDetailViewController.swift */; };
 		087473BA223A452900D39BC8 /* emCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087473B9223A452900D39BC8 /* emCell.swift */; };
+		08E6CBC622437DFD0072B1C6 /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6CBC522437DFD0072B1C6 /* AllListViewController.swift */; };
 		08FD1049221EFE4D00DD0AE8 /* ChecklistItemCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FD1048221EFE4D00DD0AE8 /* ChecklistItemCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		085BF1922215A40E00F12E59 /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		085BF1962215D09200F12E59 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		087473B9223A452900D39BC8 /* emCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emCell.swift; sourceTree = "<group>"; };
+		08E6CBC522437DFD0072B1C6 /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
 		08FD1048221EFE4D00DD0AE8 /* ChecklistItemCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 			children = (
 				085BF17F22159C7F00F12E59 /* ChecklistViewController.swift */,
 				085BF1962215D09200F12E59 /* ItemDetailViewController.swift */,
+				08E6CBC522437DFD0072B1C6 /* AllListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				08FD1049221EFE4D00DD0AE8 /* ChecklistItemCellTableViewCell.swift in Sources */,
 				087473BA223A452900D39BC8 /* emCell.swift in Sources */,
 				085BF1972215D09200F12E59 /* ItemDetailViewController.swift in Sources */,
+				08E6CBC622437DFD0072B1C6 /* AllListViewController.swift in Sources */,
 				085BF18022159C7F00F12E59 /* ChecklistViewController.swift in Sources */,
 				085BF1932215A40E00F12E59 /* ChecklistItem.swift in Sources */,
 				085BF17E22159C7F00F12E59 /* AppDelegate.swift in Sources */,
