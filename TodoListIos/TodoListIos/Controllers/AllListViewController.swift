@@ -48,7 +48,20 @@ class AllListViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if("CheckListAccess" == segue.identifier){
+        if(segue.identifier == "addIList"){
+            let navigation = segue.destination as! UINavigationController
+            let delegateVC = navigation.topViewController as! ListDetailViewController
+            delegateVC.delegate = self
+        }
+        else if("editItem" == segue.identifier){
+            let navigation = segue.destination as! UINavigationController
+            let delegateVC = navigation.topViewController as! ListDetailViewController
+            delegateVC.delegate = self
+            let cell = sender as! emCell
+            let index = tableView.indexPath(for: cell)
+            delegateVC.itemToEdit = lists[index!.row]
+        }
+        else if("CheckListAccess" == segue.identifier){
             let delegateVC = segue.destination as! ChecklistViewController
             let cell = sender
             let index =  tableView.indexPath(for: cell as! UITableViewCell)
