@@ -18,15 +18,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ListItem" id="Lan-u6-MMI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ListItem" id="Lan-u6-MMI" customClass="ChecklistItemCellTableViewCell" customModule="TodoListIos" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lan-u6-MMI" id="hVM-Uo-ntn">
                                     <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDm-CQ-NgX">
+                                            <rect key="frame" x="16" y="11" width="283" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lDm-CQ-NgX" firstAttribute="top" secondItem="hVM-Uo-ntn" secondAttribute="topMargin" id="0OG-AD-4bP"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="lDm-CQ-NgX" secondAttribute="trailing" id="RuO-bM-GAT"/>
+                                        <constraint firstItem="lDm-CQ-NgX" firstAttribute="leading" secondItem="hVM-Uo-ntn" secondAttribute="leadingMargin" id="v0z-gF-qA3"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="lDm-CQ-NgX" secondAttribute="bottom" id="wQQ-s7-xgO"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="label" destination="lDm-CQ-NgX" id="Lks-dc-HQo"/>
                                     <segue destination="FLu-P2-Zng" kind="show" identifier="CheckListAccess" id="vFA-Gb-73n"/>
+                                    <segue destination="Nr0-F9-OlF" kind="presentation" identifier="editList" trigger="accessoryAction" id="KOL-YH-Frh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -38,14 +54,14 @@
                     <navigationItem key="navigationItem" title="Checklists" id="WAR-Iv-5hY">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5Sn-H3-Y3N">
                             <connections>
-                                <segue destination="Nr0-F9-OlF" kind="presentation" id="Dr4-ms-RZc"/>
+                                <segue destination="Nr0-F9-OlF" kind="presentation" identifier="addList" id="Dr4-ms-RZc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wa-Io-H8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-514" y="134"/>
+            <point key="canvasLocation" x="-514.39999999999998" y="133.5832083958021"/>
         </scene>
         <!--Add List-->
         <scene sceneID="5JJ-kX-XLF">
@@ -70,6 +86,10 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="1Tu-ux-Pbu" id="Jma-dm-A5O"/>
+                                                        <outlet property="pasteDelegate" destination="1Tu-ux-Pbu" id="HDC-d8-Owd"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -102,7 +122,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="Kfy-ew-Qw7" id="wew-zT-Uvn"/>
-                        <outlet property="textField" destination="hWD-dt-qNv" id="l3y-Z4-Eq8"/>
+                        <outlet property="textField" destination="hWD-dt-qNv" id="ZAI-MW-knS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCh-Ae-IJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,6 +313,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="KOL-YH-Frh"/>
         <segue reference="G6O-3d-we1"/>
     </inferredMetricsTieBreakers>
 </document>

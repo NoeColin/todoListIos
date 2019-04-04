@@ -10,17 +10,16 @@ import UIKit
 
 class ListDetailViewController: UITableViewController {
 
-    var delegate : listDelegate?
+    public var delegate : listDelegate?
     var listToEdit : Checklist?
     
-    
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: UITextField! 
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     @IBAction func done(_ sender: Any) {
         if(listToEdit == nil){
-            let newItem = Checklist(text: textField.text!)
-            delegate?.ListDetailViewController(self, didFinishAddingList: newItem)
+            let newList = Checklist(text: textField.text!)
+            delegate?.ListDetailViewController(self, didFinishAddingList: newList)
         }
         else if(listToEdit != nil){
             listToEdit?.name = textField.text!
@@ -31,7 +30,7 @@ class ListDetailViewController: UITableViewController {
     
     
     @IBAction func cancel(_ sender: Any) {
-        delegate?.ListDetailViewController(self)
+        delegate?.ListDetailViewControllerDidCancel(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +41,7 @@ class ListDetailViewController: UITableViewController {
     override func viewDidLoad() {
         if(listToEdit != nil){
             textField.text = listToEdit?.name
-            self.title = "Edit Item"
+            self.title = "Edit List"
         }
         
     }

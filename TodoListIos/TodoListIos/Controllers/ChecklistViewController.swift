@@ -27,12 +27,14 @@ class ChecklistViewController: UITableViewController {
     }
     
     override func awakeFromNib() {
-       loadCheckListItems()
+     //  loadCheckListItems()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(!ChecklistItems.isEmpty ){
       self.title = list.name
+        }
         print(documentDirectory)
         print(dataFileUrl)
         // Do any additional setup after loading the view, typically from a nib.
@@ -124,7 +126,7 @@ extension ChecklistViewController : ItemDetailDelegate{
         let index : Int = ChecklistItems.index(where: {$0 === item})!
         ChecklistItems[index].text = item.text
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-        saveCheckListItems()
+       // saveCheckListItems()
     }
     
     func ItemDetailViewControllerDidCancel(_ controller: ItemDetailViewController){
@@ -134,7 +136,7 @@ extension ChecklistViewController : ItemDetailDelegate{
         dismiss(animated: true)
         ChecklistItems.append(item)
         tableView.insertRows(at: [IndexPath(row: ChecklistItems.count - 1, section: 0)], with: UITableView.RowAnimation.automatic)
-        saveCheckListItems()
+        //saveCheckListItems()
     }
 }
 
